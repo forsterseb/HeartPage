@@ -1,0 +1,17 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<section class="content">
+  <div id="pulse_div"></div>
+  <img id="heart_icon" src="{{ url_for('static', filename='heart_icon.png') }}">
+</section>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
