@@ -1,6 +1,5 @@
-from flask import Flask, render_template, Response, redirect
-import time
-import random
+from flask import Flask, render_template, redirect
+from pulse import block_and_calc_bpm, get_BPMs
 
 app = Flask(__name__)
 
@@ -13,10 +12,11 @@ def index():
     return render_template('index.html')
 
 @app.route('/api/pulse', methods=['GET'])
-def pulse():
-    def events():
-        while(True):
-            pulse = random.randrange(60,180)
-            yield f"data: {pulse}\n\n"
-            time.sleep(.2)  # an artificial delay
-    return Response(events(), content_type='text/event-stream')
+def pulse2():
+    return get_BPMs()
+
+# start background thread that reads from sensor and calculates the bpm
+from threading import Thread
+flask_task = Thread(target=block_and_calc_bpm)
+flask_task.daemon = True
+flask_task.start()
