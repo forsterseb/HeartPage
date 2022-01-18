@@ -1,7 +1,7 @@
 body{
     background-color: rgba(0,0,0,.5);
     background-color: rgba(255,0,0,.5);
-    font-size: 250%;/*xx-large;*/
+    font-size: 250%;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     font-family: 'Work Sans', sans-serif; color: white;
 }
