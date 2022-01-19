@@ -1,0 +1,19 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Hist BPM</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<section class="content">
+  <div><canvas id="hist_bpm_div"></canvas></div>
+</section>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='graphs.js') }}"></script>
+<script>load_hist_bpm();</script>
