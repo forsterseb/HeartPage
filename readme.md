@@ -29,8 +29,13 @@ pip install -r requirements.txt
 flask run
 ```
 ## Display page in obs
-Default URL for the page is `http://localhost:5000/index.html`
-In OBS add this URL as a new Source -> Browser.
+In OBS add those URLs as a new Source -> Browser.
+
+|url|description|
+|---|---|
+http://localhost:5000/index.html | Pulse as Number
+http://localhost:5000/hist_bpm.html | Graph of last 50 BPM
+http://localhost:5000/raw_data.html | Graph of last 500 sensor values
 
 ## Use OBS as cam
 https://obsproject.com/forum/resources/obs-virtualcam.949/

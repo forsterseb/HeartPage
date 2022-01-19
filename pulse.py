@@ -15,6 +15,12 @@ beat_old = 0
 BPM = 0
 current_BPM = 0
 
+# variables for graphs
+raw_BPMs = []
+MAX_RAW_BPM = 500
+hist_BPMs = []
+MAX_HIST_BPM = 50
+
 def get_pulse_generator():
     try:
         ser = serial.Serial('COM3', 9600, timeout=1)
@@ -27,17 +33,14 @@ def get_pulse_generator():
         if value and value != "!":
             global below_threshold, threshold
             value = int(value)
+            log_raw_value(value)
             if value != 0:
                 pass
-                #print(value)
             if value > threshold and below_threshold:
                 bpm()
-                print(value)
                 below_threshold = False
             elif value < threshold:
                 below_threshold = True
-
-        #time.sleep(0.001)
         yield value
 
 def bpm():
@@ -51,8 +54,9 @@ def bpm():
     c_BPM = 60000//diff
     if c_BPM > 250: return # check if BEAT is possible if not return
     current_BPM = c_BPM
-    
+
     add_bpm_to_list(current_BPM)
+    log_hist_bpm(current_BPM)
     BPM = sum(beats)//len(beats)
 
     print(f"current_BPM {current_BPM}")
@@ -73,10 +77,26 @@ def get_BPMs() -> Dict:
     global BPM, current_BPM
     return {'BPM': BPM, 'current_BPM': current_BPM}
 
+def get_raw_bpm_data():
+    return raw_BPMs
+
+def get_hist_bpm():
+    return hist_BPMs
+
 def block_and_calc_bpm():
     """Runs through the values in the pulse_generator so the generator keeps reading from serial and calculating bpm."""
     for i in get_pulse_generator():
         pass
+
+def log_raw_value(value):
+    raw_BPMs.append(value)
+    if len(raw_BPMs) > MAX_RAW_BPM:
+        raw_BPMs.pop(0)
+
+def log_hist_bpm(bpm):
+    hist_BPMs.append(bpm)
+    if len(hist_BPMs) > MAX_HIST_BPM:
+        hist_BPMs.pop(0)
 
 if __name__ == '__main__':
     block_and_calc_bpm()
