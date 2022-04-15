@@ -25,7 +25,7 @@ The following image for the placement of the electrodes on the body is from a mi
 pip install -r requirements.txt
 ```
 # Usage
-## Start reading from Arduino and webpage
+## Start calculating BPM and host webpage
 ```console
 BASH:
 $ export FLASK_APP=app
@@ -39,7 +39,7 @@ Powershell:
 flask run
 ```
 ## Display page in OBS
-In OBS add those URLs as a new Source -> Browser.
+In OBS add those URLs as a new Source -> Browser. (Black part of images is transparent in webpage.)
 
 |url|description|preview|
 |---|---|---|
