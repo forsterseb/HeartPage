@@ -1,4 +1,3 @@
-from distutils.log import error
 from typing import Dict
 import serial
 import time
@@ -34,8 +33,6 @@ def get_pulse_generator():
             global below_threshold, threshold
             value = int(value)
             log_raw_value(value)
-            if value != 0:
-                pass
             if value > threshold and below_threshold:
                 bpm()
                 below_threshold = False
@@ -85,7 +82,7 @@ def get_hist_bpm():
 
 def block_and_calc_bpm():
     """Runs through the values in the pulse_generator so the generator keeps reading from serial and calculating bpm."""
-    for i in get_pulse_generator():
+    for _ in get_pulse_generator():
         pass
 
 def log_raw_value(value):

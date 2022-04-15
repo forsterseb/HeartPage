@@ -1,0 +1,73 @@
+.container {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2em;
+    transition: all 0.7s linear;
+}
+.bar {
+    position: absolute;
+    stroke: black;
+    width: 300px;
+    height: 300px;
+    stroke-width: 1.5;
+    fill: transparent;
+    transition: all 0.7s linear;
+}
+
+
+.border-low {
+    stroke: green;
+}
+.fill-low {
+    fill: green;
+}
+.low {
+    color: green;
+}
+
+.border-normal {
+    stroke: green;
+}
+.fill-normal {
+    fill: green;
+}
+.normal {
+    color: green;
+}
+
+.border-middle {
+    stroke: orange;
+}
+.fill-middle {
+    fill: orange;
+}
+.middle {
+    color: orange;
+}
+
+.border-high {
+    stroke: orangered;
+}
+.fill-high {
+    fill: orangered;
+}
+.high {
+    color: orangered;
+}
+
+.border-extreme {
+    stroke: red;
+}
+.fill-extreme {
+    fill: red;
+}
+.extreme {
+    color: red;
+}

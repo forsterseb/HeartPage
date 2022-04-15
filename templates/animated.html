@@ -1,0 +1,30 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Hist BPM</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='animated.css') }}">
+<section class="content">
+  <div class="container">
+    <svg id="arc_svg" class="bar">
+      <path id="arc1" class="bar"/>
+      <path id="arc2" class="bar"/>
+      <path id="arc3" class="bar"/>
+      <path id="arc4" class="bar"/>
+      <path id="arc5" class="bar"/>
+    </svg>
+    <span class="content" id="pulse_span">123</span>
+  </div>
+</section>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='animated.js') }}"></script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script>pulsing_anim();</script>

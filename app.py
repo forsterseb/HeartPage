@@ -22,6 +22,10 @@ def rd_graph():
 def hb_graph():
     return render_template('hist_bpm.html')
 
+@app.route('/animated.html')
+def animated():
+    return render_template('animated.html')
+
 #################
 ## API-Methods ##
 #################
